@@ -1,7 +1,7 @@
 services:
   - type: web
     name: chaos-runner-api
-    env: python
+    runtime: python
     rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn wsgi:app
@@ -10,11 +10,12 @@ services:
         value: "false"
       - key: CHAOS_RUNNER_CORS_ORIGINS
         sync: false
-  - type: static
+  - type: web
     name: chaos-runner-web
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    staticPublishPath: frontend/dist
     envVars:
       - key: VITE_API_URL
         sync: false
