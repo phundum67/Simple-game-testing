@@ -1,0 +1,30 @@
+"""
+Copy this file on PythonAnywhere to:
+/var/www/yourusername_pythonanywhere_com_wsgi.py
+
+Then replace `yourusername` with your PythonAnywhere username and adjust
+the project path if needed.
+"""
+
+import os
+import sys
+from pathlib import Path
+
+USERNAME = "yourusername"
+PROJECT_ROOT = Path(f"/home/{USERNAME}/Simple-game-testing/backend")
+DB_DIR = Path(f"/home/{USERNAME}/chaos-runner-data")
+
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+DB_DIR.mkdir(parents=True, exist_ok=True)
+
+os.environ.setdefault("FLASK_DEBUG", "false")
+os.environ.setdefault(
+    "CHAOS_RUNNER_CORS_ORIGINS",
+    f"https://{USERNAME}.netlify.app",
+)
+os.environ.setdefault("CHAOS_RUNNER_DB", str(DB_DIR / "leaderboard.db"))
+
+from app import app as application
+

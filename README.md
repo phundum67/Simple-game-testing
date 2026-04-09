@@ -13,8 +13,10 @@ Chaos Runner is an original full-stack browser platformer built with React on th
 ```text
 chaos-runner/
   backend/
+    .env.example
     app.py
     database.py
+    pythonanywhere_wsgi.py.template
     requirements.txt
     runtime.txt
     seed_data.py
@@ -35,6 +37,7 @@ chaos-runner/
           characters.js
           levels.js
   README.md
+  netlify.toml
   render.yaml
 ```
 
@@ -120,6 +123,82 @@ Open the Vite URL shown in the terminal, usually `http://127.0.0.1:5173`.
 - Swap SQLite later by replacing the functions in `backend/database.py` with another database adapter while keeping the Flask routes unchanged
 
 ## Deployment Later
+
+## No-Credit-Card Deploy Path
+
+The easiest free-friendly route for this project is:
+
+- Frontend on Netlify
+- Backend on PythonAnywhere
+
+That avoids the Render credit-card check while keeping the full game and leaderboard online.
+
+### Netlify Frontend
+
+This repo now includes [netlify.toml](/d:/booking%20app%20AI/chaos-runner/netlify.toml), so Netlify can build the frontend from the `frontend/` folder automatically.
+
+Use these settings in Netlify:
+
+- Base directory: `frontend`
+- Build command: `npm install && npm run build`
+- Publish directory: `dist`
+
+Set this environment variable in Netlify before the first production build:
+
+```bash
+VITE_API_URL=https://your-pythonanywhere-username.pythonanywhere.com
+```
+
+Then redeploy the site.
+
+### PythonAnywhere Backend
+
+Upload or clone the repo to PythonAnywhere so the backend folder exists at something like:
+
+```bash
+/home/your-pythonanywhere-username/Simple-game-testing/backend
+```
+
+In a PythonAnywhere Bash console:
+
+```bash
+cd ~/Simple-game-testing/backend
+python3.10 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+mkdir -p ~/chaos-runner-data
+```
+
+Then create the web app in the PythonAnywhere dashboard:
+
+- Framework: Manual configuration
+- Python version: pick the newest available 3.x version
+
+Use [backend/pythonanywhere_wsgi.py.template](/d:/booking%20app%20AI/chaos-runner/backend/pythonanywhere_wsgi.py.template) as the starting point for your WSGI config file.
+
+Important values to set there:
+
+- `PROJECT_ROOT` should point to your uploaded repo backend folder
+- `CHAOS_RUNNER_DB` should point to a writable persistent path like:
+  `/home/your-pythonanywhere-username/chaos-runner-data/leaderboard.db`
+- `CHAOS_RUNNER_CORS_ORIGINS` should be your Netlify URL
+
+You can also copy values from [backend/.env.example](/d:/booking%20app%20AI/chaos-runner/backend/.env.example).
+
+After saving the WSGI file, reload the PythonAnywhere web app.
+
+### Final Wiring
+
+1. Deploy backend to PythonAnywhere
+2. Copy the PythonAnywhere app URL
+3. Set `VITE_API_URL` in Netlify to that backend URL
+4. Redeploy Netlify
+5. Set `CHAOS_RUNNER_CORS_ORIGINS` in PythonAnywhere to the final Netlify URL
+6. Reload the PythonAnywhere app
+
+### Leaderboard Storage Note
+
+SQLite is still fine for a first release on PythonAnywhere because you can store the database in your home directory. If the game grows later, swap [backend/database.py](/d:/booking%20app%20AI/chaos-runner/backend/database.py) to PostgreSQL.
 
 ### Frontend
 
