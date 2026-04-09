@@ -1,0 +1,67 @@
+export const CHARACTER_DESIGN_SPECS = {
+  "sahoor-sproing": {
+    silhouette: "round gremlin runner with moon cap, magnifier prop, and oversized pajama boots",
+    palette: ["#ffb14b", "#74c7ff", "#8de06b", "#6c47d9"],
+    personality: "springy midnight scout built around jump arcs and floaty optimism",
+    poseNotes: {
+      idle: "light bounce with magnifier forward",
+      run: "lean ahead with hat trailing behind",
+      jump: "knees tucked and free hand up",
+      fall: "hat and sleeves lifted by air",
+      hurt: "eyes squeezed, magnifier tilted outward",
+      win: "one fist up, bright moon-cap bounce",
+    },
+  },
+  "sixty-hex": {
+    silhouette: "digit-bodied speed runner with glossy number faceplate and angled cap shard",
+    palette: ["#3bd7ff", "#85fff1", "#7851ff", "#1ab9ff"],
+    personality: "version-number speedster with brisk, low-to-ground momentum",
+    poseNotes: {
+      idle: "confident ready-to-sprint pose",
+      run: "forward drive with peace-sign hand trailing",
+      jump: "body tilted diagonally like a speed boost burst",
+      fall: "feet tucked under, cap shard leading",
+      hurt: "staggered glitch wobble",
+      win: "quick pose with one arm out like a finish-line flash",
+    },
+  },
+  "gobbo-gacha": {
+    silhouette: "hooded goblin looter with mystery box overhead and chunky satchel form",
+    palette: ["#99d228", "#6d36c2", "#ffb43c", "#47206d"],
+    personality: "sneaky loot hunter with springy hands and greedy little hops",
+    poseNotes: {
+      idle: "mystery box cradled and shoulders hunched",
+      run: "cloak tail trailing with box arm high",
+      jump: "knees wide, grin open, treasure motion upward",
+      fall: "hood floats open slightly",
+      hurt: "coins scattering or bag jolt",
+      win: "box overhead and chest out",
+    },
+  },
+  "doctor-oof": {
+    silhouette: "round medic cat with clinic coat, head mirror, and bright syringe prop",
+    palette: ["#ff68d0", "#ff9bc8", "#f2f7ff", "#9cd6ff"],
+    personality: "cheerful support gremlin with resilient, bouncy posture",
+    poseNotes: {
+      idle: "doctor stance with syringe tucked near torso",
+      run: "coat flaring, health kit bounce",
+      jump: "wide-eyed float with coat tails lifted",
+      fall: "ears and mirror slightly lagging behind",
+      hurt: "dramatic flinch but still upright",
+      win: "victory smile with healing tool raised",
+    },
+  },
+  "cache-money": {
+    silhouette: "sleek wolf-cat hacker with shades, glowing card, and coin accent",
+    palette: ["#33d7ff", "#9fc8e9", "#86dcff", "#ffd45a"],
+    personality: "cool combo-builder with confident footing and neon-city swagger",
+    poseNotes: {
+      idle: "casual lean with card near shoulder",
+      run: "jacket swing and shades locked forward",
+      jump: "coin-side arm lifted as if surfing momentum",
+      fall: "tail and ears dragged upward by air",
+      hurt: "brief stagger with glasses skewed",
+      win: "card up, coin out, celebratory shine",
+    },
+  },
+};

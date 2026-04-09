@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="30" fill="#1cbaff"/>
+  <rect x="19" y="20" width="24" height="28" rx="12" fill="#85fff1"/>
+  <path d="M31 16 46 21 40 31 31 27Z" fill="#7851ff"/>
+  <circle cx="27" cy="32" r="3" fill="#1c2952"/>
+  <circle cx="36" cy="32" r="3" fill="#1c2952"/>
+  <text x="9" y="18" fill="#7ff6ea" font-size="14" font-family="Bungee, sans-serif">67</text>
+</svg>
